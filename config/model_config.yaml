@@ -1,0 +1,32 @@
+# Configurazione modelli disponibili
+
+default_model: "deepseek-coder:6.7b"
+
+models:
+  deepseek-coder:
+    sizes:
+      - "1.3b"
+      - "6.7b"
+      - "33b"
+    description: "Specializzato in code generation"
+    recommended: true
+  
+  codellama:
+    sizes:
+      - "7b"
+      - "13b"
+      - "34b"
+    description: "Code generation di Meta"
+  
+  starcoder2:
+    sizes:
+      - "3b"
+      - "7b"
+      - "15b"
+    description: "Code generation open source"
+
+# Impostazioni di generazione
+generation:
+  temperature: 0.2  # Più basso = più deterministico
+  top_p: 0.95
+  max_tokens: 2048

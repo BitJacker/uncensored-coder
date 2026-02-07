@@ -1,0 +1,12 @@
+# Core dependencies
+ollama>=0.1.0
+requests>=2.31.0
+pyyaml>=6.0
+
+# Interface
+rich>=13.0.0
+prompt-toolkit>=3.0.0
+
+# Optional
+pytest>=7.4.0
+black>=23.0.0

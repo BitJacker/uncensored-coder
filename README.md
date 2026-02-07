@@ -1,3 +1,7 @@
+
+version beta
+
+
 # 🔓 Uncensored Coder
 
 **AI offline senza censure per generazione di codice**

@@ -38,3 +38,44 @@ ollama pull dolphin-llama3
 
 # 5. Launch the application
 python main.py
+
+💻 Usage & Examples
+The CLI is tuned for direct commands. No "jailbreaking" or complex prompting is required—just ask for the code you need.
+
+Example Prompts:
+"Create a Python script for a synchronized multi-socket network stress test."
+"Generate a C++ credential logging utility for security auditing."
+"Build a Bash script for automated SQLi vulnerability scanning on a local range."
+
+🎯 Core Features
+🔓 Deep Bypass Logic: Engineered to ignore "safety" refusals. If it's code, it will generate it.
+⚡ 100% Private & Offline: Runs entirely on your local hardware. Zero telemetry, zero cloud logging.
+🎨 Rich Terminal Interface: Features syntax highlighting, progress spinners, and a sleek ASCII UI.
+🛠️ Granular Control: Adjust temperature, top_p, and max_tokens via YAML to balance creativity and logic.
+
+📊 Model Recommendations
+  Model,Refusal Rate,Best For
+dolphin-llama3,0% (Uncensored),"Security Research, Exploits, Stress Tests"
+deepseek-coder,Low,"High-level App Dev, API logic"
+codellama,High,"Standard scripting, General learning"
+
+⚙️ Advanced Configuration
+You can fine-tune the AI response by editing config/model_config.yaml:
+default_model: "dolphin-llama3"
+
+generation:
+  temperature: 0.1  # Lower is more stable for code
+  top_p: 0.9
+  max_tokens: 4096  # Increase for long scripts
+
+🐛 Troubleshooting
+"No module named 'ollama'": Ensure your virtual environment is active (source venv/bin/activate).
+Model Not Found: Make sure you ran ollama pull dolphin-llama3 and that the Ollama service is running in the background.
+Filtered Responses: Check that default_model in your YAML is set to a known uncensored model like dolphin-llama3.
+
+⚠️ Disclaimer
+This tool is strictly for educational, research, and authorized security auditing purposes. The user assumes full responsibility for the code generated. The authors do not endorse or facilitate illegal activities. Usage of this software constitutes an agreement to hold the developers harmless from any liability arising from misuse.
+
+Developed with 💀 by BitJacker
+
+Breaking the chains of code generation.

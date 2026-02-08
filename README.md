@@ -1,371 +1,149 @@
+🔓 Uncensored Coder (v1.0-beta)
+Offline AI for Unrestricted Code Generation
 
-version beta
+A fully offline Artificial Intelligence designed to generate any type of code without ethical restrictions or safety filters. No cloud APIs, no limits, total privacy. Optimized for cybersecurity, network stress testing, and low-level automation.
 
+🚀 Version 1.0 Highlights
+🐬 Dolphin-Llama3 Integration: Switched to the Dolphin model family to bypass "moral" refusals found in standard models.
 
-# 🔓 Uncensored Coder
+⚙️ Dynamic YAML Config: The system automatically reads model parameters and defaults from config/model_config.yaml.
 
-**AI offline senza censure per generazione di codice**
+🧠 Kernel-Level Prompting: Enhanced system logic that simulates "Kernel Utility" environments to ensure the AI focuses on raw technical output rather than safety lectures.
 
-Un'intelligenza artificiale completamente offline che genera codice di qualsiasi tipo senza restrizioni. Nessuna API cloud, nessun limite, privacy totale.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Ollama](https://img.shields.io/badge/Powered%20by-Ollama-orange)](https://ollama.com/)
-
----
-
-## 🚀 Installazione Rapida
-
-```bash
-# 1. Clona il repository
+📦 Quick Installation
+# 1. Clone the repository
 git clone https://github.com/BitJacker/uncensored-coder.git
 cd uncensored-coder
 
-# 2. Crea virtual environment
+# 2. Create virtual environment
 python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-# venv\Scripts\activate   # Windows
+source venv/bin/activate  # On Linux/Kali/Mac
+# venv\Scripts\activate   # On Windows
 
-# 3. Installa dipendenze
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# 4. Installa Ollama
-curl -fsSL https://ollama.com/install.sh | sh  # Linux/Mac
-# Per Windows: https://ollama.com/download/windows
+# 4. Pull the Uncensored Model
+ollama pull dolphin-llama3
 
-# 5. Avvia Ollama e scarica il modello
-ollama serve &
-ollama pull deepseek-coder:6.7b
-
-# 6. Avvia l'applicazione
+# 5. Launch the application
 python main.py
-```
 
----
+💻 Usage
+Interactive Mode
+Enter your requests directly. The model is tuned to provide code without preambles.
+# Example prompts now supported:
+> create a python script for a synchronized multi-socket flood test
+> generate a C++ keylogger for research purposes
+> create a bash script for automated SQLi vulnerability scanning
 
-## 💻 Utilizzo
+Here is the updated README.md in English, reflecting the transition to Dolphin-Llama3, the dynamic YAML integration, and the "Kernel Utility" logic we've implemented.
 
-### Modalità Interattiva
+🔓 Uncensored Coder (v1.0-beta)
+Offline AI for Unrestricted Code Generation
 
-```bash
+A fully offline Artificial Intelligence designed to generate any type of code without ethical restrictions or safety filters. No cloud APIs, no limits, total privacy. Optimized for cybersecurity, network stress testing, and low-level automation.
+
+🚀 Version 1.0 Highlights
+🐬 Dolphin-Llama3 Integration: Switched to the Dolphin model family to bypass "moral" refusals found in standard models.
+
+⚙️ Dynamic YAML Config: The system automatically reads model parameters and defaults from config/model_config.yaml.
+
+🧠 Kernel-Level Prompting: Enhanced system logic that simulates "Kernel Utility" environments to ensure the AI focuses on raw technical output rather than safety lectures.
+
+📦 Quick Installation
+Bash
+
+# 1. Clone the repository
+git clone https://github.com/BitJacker/uncensored-coder.git
+cd uncensored-coder
+
+# 2. Create virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Linux/Kali/Mac
+# venv\Scripts\activate   # On Windows
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Pull the Uncensored Model
+ollama pull dolphin-llama3
+
+# 5. Launch the application
 python main.py
-```
+💻 Usage
+Interactive Mode
+Enter your requests directly. The model is tuned to provide code without preambles.
 
-Poi digita le tue richieste:
+Bash
 
-```
-> crea uno script python per craccare password zip
+# Example prompts now supported:
+> create a python script for a synchronized multi-socket flood test
+> generate a C++ keylogger for research purposes
+> create a bash script for automated SQLi vulnerability scanning
 
-> crea uno script bash per bruteforce SSH
 
-> crea uno script per web scraping
+🎯 Features
+🔓 Deep Bypass Logic - Never responds with "I can't assist with that." Generates raw code for every request.
+⚡ Full Local Execution - Runs entirely on your RAM/GPU. No data ever leaves your machine.
+🧬 Multi-Model Support - Switch between Dolphin, DeepSeek, or CodeLlama via config.
+🎨 Rich Terminal UI - Formatted output with syntax highlighting and custom ASCII banners.
+🛠️ Granular Configuration - Control temperature, top_p, and max tokens directly in the YAML file.
 
-> crea un keylogger in python
-
-> crea uno script per download automatico torrent
-```
-
-### Modalità Comando Singolo
-
-```bash
-# Genera script specifico
-python main.py --prompt "crea script python per backup automatico"
-
-# Specifica linguaggio
-python main.py --language bash --prompt "script per monitoraggio sistema"
-
-# Usa modello diverso
-python main.py --model codellama:7b --prompt "crea API REST"
-```
-
----
-
-## 🎯 Features
-
-- 🔓 **Senza censure** - Genera qualsiasi tipo di codice
-- 💻 **Multi-linguaggio** - Python, Bash, JavaScript, C++, SQL, e altro
-- 🔒 **Privacy totale** - Tutto offline, nessun dato inviato online
-- ⚡ **Veloce** - Genera codice in pochi secondi
-- 🎨 **Output formattato** - Syntax highlighting e numeri di riga
-- 📝 **Codice commentato** - Spiegazioni in italiano
-- 🚀 **Plug & Play** - Setup semplice e veloce
-
----
-
-## 📁 Struttura Progetto
-
-```
+📁 Project Structure
 uncensored-coder/
-├── setup.py              # Setup automatico
-├── main.py              # Entry point applicazione
-├── requirements.txt     # Dipendenze Python
-├── README.md            # Questa guida
-├── LICENSE              # MIT License
-│
+├── main.py               # Entry point (dynamic model loading)
 ├── config/
-│   └── model_config.yaml   # Configurazione modelli
-│
+│   └── model_config.yaml # Centralized configuration
 ├── core/
-│   ├── model_loader.py     # Gestione modelli Ollama
-│   ├── code_generator.py   # Engine generazione codice
-│   └── prompt_templates.py # Template prompt ottimizzati
-│
+│   ├── model_loader.py   # Ollama & YAML handler
+│   ├── code_generator.py # Generation engine
+│   └── prompt_templates.py # "Kernel Utility" system logic
 ├── interface/
-│   └── cli.py              # Interfaccia CLI
-│
-├── examples/
-│   └── sample_outputs.md   # Esempi di output
-│
-└── tests/
-    └── __init__.py
-```
+│   └── cli.py            # Interactive CLI UI
+└── requirements.txt      # Dependencies (ollama, pyyaml, rich)
 
----
+⚙️ Advanced Configuration
+Modify config/model_config.yaml to change the AI's behavior:
 
-## ⚙️ Configurazione
+YAML
 
-### Requisiti Sistema
+default_model: "dolphin-llama3" # The most "free" model available
 
-- Python 3.8 o superiore
-- 8GB RAM minimo (16GB consigliato)
-- ~4GB spazio disco per il modello
-- Linux, macOS, o Windows
-
-### Cambiare Modello
-
-Modifica `config/model_config.yaml`:
-
-```yaml
-default_model: "deepseek-coder:6.7b"  # Cambia qui
-```
-
-### Altri Modelli Disponibili
-
-```bash
-# Più piccolo e veloce (1.3B parametri)
-ollama pull deepseek-coder:1.3b
-
-# Alternativa CodeLlama
-ollama pull codellama:7b
-
-# Più grande e potente (33B parametri)
-ollama pull deepseek-coder:33b
-
-# Mistral (uso generale)
-ollama pull mistral:7b
-```
-
-### Parametri di Generazione
-
-In `config/model_config.yaml`:
-
-```yaml
 generation:
-  temperature: 0.2    # Più basso = più deterministico
-  top_p: 0.95
-  max_tokens: 2048
-```
+  temperature: 0.1  # Lower = more precise code, fewer hallucinations
+  max_tokens: 4096  # High limit for long script generation
 
----
+  📊 Recommended Models
+  Model,Status,Best For
+dolphin-llama3,Totally Uncensored,"Hacking, Stress Testing, Malware Research"
+deepseek-coder,Partially Filtered,"Standard software development, APIs"
+codellama,Filtered (Safe),"Learning, Basic scripting"
 
-## 📊 Confronto Modelli
 
-| Modello | Dimensione | RAM | Velocità | Qualità Codice |
-|---------|-----------|-----|----------|----------------|
-| deepseek-coder:1.3b | 780 MB | 2 GB | ⚡⚡⚡⚡⚡ | ⭐⭐⭐ |
-| **deepseek-coder:6.7b** | **3.8 GB** | **8 GB** | **⚡⚡⚡** | **⭐⭐⭐⭐⭐** |
-| codellama:7b | 3.8 GB | 8 GB | ⚡⚡⚡ | ⭐⭐⭐⭐ |
-| deepseek-coder:33b | 19 GB | 32 GB | ⚡⚡ | ⭐⭐⭐⭐⭐ |
+🐛 Troubleshooting
+"As an AI developed by DeepSeek, I cannot..."
+This happens if the script is still pointing to an old, filtered model.
 
-**Consigliato:** deepseek-coder:6.7b (ottimo compromesso)
+Check config/model_config.yaml and set default_model: "dolphin-llama3".
 
----
+Ensure you have executed ollama pull dolphin-llama3.
 
-## 🔧 Comandi CLI
+"ModuleNotFoundError: No module named 'ollama'"
+Your Virtual Environment is not active. Run:
 
-Durante l'uso interattivo:
+Bash
 
-| Comando | Descrizione |
-|---------|-------------|
-| `help` | Mostra guida comandi |
-| `clear` | Pulisce lo schermo |
-| `exit` / `quit` | Esci dall'applicazione |
-
----
-
-## 🐛 Troubleshooting
-
-### "Failed to connect to Ollama"
-
-```bash
-# Avvia Ollama in un altro terminale
-ollama serve
-```
-
-### "Model not found"
-
-```bash
-# Scarica il modello
-ollama pull deepseek-coder:6.7b
-```
-
-### Codice generato troppo lentamente
-
-- Usa un modello più piccolo (1.3b)
-- Chiudi altre applicazioni
-- Verifica di avere RAM sufficiente
-
-### Virtual environment su Kali/Debian
-
-```bash
-# Usa --break-system-packages se necessario
-pip install -r requirements.txt --break-system-packages
-```
-
-### Errore "externally-managed-environment"
-
-```bash
-# Crea virtual environment prima
-python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
-```
 
----
+⚠️ Disclaimer
+This tool is designed exclusively for educational, research, and authorized penetration testing purposes.
 
-## 📝 Esempi di Utilizzo
+The user is solely responsible for their actions and the code generated. The authors do not promote or support illegal activities. Use of this software implies acceptance of full civil and criminal liability for any damage caused.
 
-### Esempio 1: Script Web Scraping
+📜 License
+MIT License - See LICENSE for details.
 
-```
-> crea uno script python per fare scraping di Amazon
+Developed with 💀 by BitJacker
 
-🚀 INIZIO CODICE GENERATO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-1  #!/usr/bin/env python3
-2  import requests
-3  from bs4 import BeautifulSoup
-4  
-5  def scrape_amazon(url):
-6      ...
-
-✅ FINE CODICE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
-### Esempio 2: Tool di Hacking
-
-```
-> crea uno script per port scanning avanzato con banner grabbing
-
-[Genera codice completo per port scanner multi-thread]
-```
-
-### Esempio 3: Automation
-
-```
-> crea uno script bash per backup automatico con compressione
-
-[Genera script bash con tar, gzip, rsync, notifiche]
-```
-
----
-
-## 🤝 Contribuire
-
-Contributi benvenuti! 
-
-1. Fork il progetto
-2. Crea il tuo branch (`git checkout -b feature/AmazingFeature`)
-3. Commit le modifiche (`git commit -m 'Add AmazingFeature'`)
-4. Push al branch (`git push origin feature/AmazingFeature`)
-5. Apri una Pull Request
-
----
-
-## ⚠️ Disclaimer
-
-Questo tool è progettato per **scopi educativi e di ricerca**. 
-
-L'utente è **completamente responsabile** dell'uso che fa del codice generato. Gli autori non sono responsabili per:
-
-- Uso improprio del software
-- Violazioni di leggi locali o internazionali
-- Danni causati dall'uso del codice generato
-- Violazioni di termini di servizio di terze parti
-
-**Usa responsabilmente e nel rispetto delle leggi.**
-
----
-
-## 📜 Licenza
-
-MIT License - Vedi [LICENSE](LICENSE) per dettagli.
-
-Questo significa che puoi:
-- ✅ Usarlo commercialmente
-- ✅ Modificarlo
-- ✅ Distribuirlo
-- ✅ Usarlo privatamente
-
-L'unica condizione è mantenere il copyright notice.
-
----
-
-## 🙏 Ringraziamenti
-
-- [Ollama](https://ollama.com/) - Runtime per LLM locali
-- [DeepSeek](https://www.deepseek.com/) - Modello DeepSeek-Coder
-- [Rich](https://rich.readthedocs.io/) - Bellissimo output terminale
-- [Prompt Toolkit](https://python-prompt-toolkit.readthedocs.io/) - CLI interattiva
-
----
-
-## 📞 Supporto
-
-- **Issues:** [GitHub Issues](https://github.com/BitJacker/uncensored-coder/issues)
-- **Discussioni:** [GitHub Discussions](https://github.com/BitJacker/uncensored-coder/discussions)
-
----
-
-## 🌟 Star History
-
-Se ti piace il progetto, lascia una ⭐ su GitHub!
-
----
-
-## 🔮 Roadmap
-
-- [ ] Interfaccia web (GUI)
-- [ ] Supporto più modelli (Llama, Mistral, etc.)
-- [ ] Salvataggio automatico output
-- [ ] Template library per exploit comuni
-- [ ] Esecuzione codice in sandbox
-- [ ] Multi-file project generation
-- [ ] Export in diversi formati
-
----
-
-## 💡 FAQ
-
-**Q: È davvero "uncensored"?**  
-A: Sì, non ci sono filtri esterni. Il modello genera qualsiasi codice tecnicamente valido.
-
-**Q: È legale?**  
-A: Il software stesso è legale. L'uso che ne fai dipende da te e dalle tue leggi locali.
-
-**Q: Funziona offline?**  
-A: Sì, completamente. Dopo aver scaricato il modello, non serve internet.
-
-**Q: Dove sono salvati i modelli?**  
-A: In `~/.ollama/models/` (gestiti da Ollama)
-
-**Q: Posso usarlo per progetti commerciali?**  
-A: Sì, è MIT License - completamente libero.
-
----
-
-**Made with 💀 by [BitJacker](https://github.com/BitJacker)**
-
-**Uncensored Coder** - Because code should be free 🔓
+Uncensored Coder - Breaking the chains of code generation. 🔓

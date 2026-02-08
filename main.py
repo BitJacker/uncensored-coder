@@ -1,47 +1,74 @@
 #!/usr/bin/env python3
 """
-Code Genie - AI offline per generazione di codice
+Uncensored Coder - AI Code Generator
+by BitJacker
 """
 
-import argparse
+import sys
+import yaml
+import os
 from core.code_generator import CodeGenerator
 from interface.cli import CLI
 
+def banner():
+    # Primary ASCII Art Banner - Left Aligned
+    ascii_art = r"""
+██╗   ██╗███╗   ██╗ ██████╗███████╗███╗   ██╗███████╗ ██████╗ ██████╗ ███████╗██████╗ 
+██║   ██║████╗  ██║██╔════╝██╔════╝████╗  ██║██╔════╝██╔═══██╗██╔══██╗██╔════╝██╔══██╗
+██║   ██║██╔██╗ ██║██║     █████╗  ██╔██╗ ██║███████╗██║   ██║██║  ██║█████╗  ██████╔╝
+██║   ██║██║╚██╗██║██║     ██╔══╝  ██║╚██╗██║╚════██║██║   ██║██║  ██║██╔══╝  ██╔══██╗
+╚██████╔╝██║ ╚████║╚██████╗███████╗██║ ╚████║███████║╚██████╔╝██████╔╝███████╗██║  ██║
+ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝╚══════╝╚═╝  ╚═══╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
+
+██████╗ ██████╗ ██████╗ ███████╗██████╗ 
+██╔════╝██╔═══██╗██╔══██╗██╔════╝██╔══██╗
+██║     ██║   ██║██║  ██║█████╗  ██████╔╝
+██║     ██║   ██║██║  ██║██╔══╝  ██╔══██╗
+╚██████╗╚██████╔╝██████╔╝███████╗██║  ██║
+ ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
+"""
+    print(ascii_art.strip())
+    print("by BitJacker")
+    print("\n")
+
+def get_default_model():
+    """Recupera il modello predefinito dal file config"""
+    # Costruisce il percorso assoluto verso il file di configurazione
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    config_path = os.path.join(base_dir, 'config', 'model_config.yaml')
+    
+    try:
+        with open(config_path, 'r') as f:
+            config = yaml.safe_load(f)
+            return config.get('default_model', 'dolphin-llama3')
+    except Exception:
+        # Se il file non esiste o ha errori, usiamo dolphin come fallback sicuro
+        return 'dolphin-llama3'
+
 def main():
-    parser = argparse.ArgumentParser(
-        description='Code Genie - AI offline per generazione di script'
-    )
-    parser.add_argument(
-        '--prompt', 
-        type=str, 
-        help='Descrizione dello script da generare'
-    )
-    parser.add_argument(
-        '--language', 
-        type=str, 
-        default='python',
-        help='Linguaggio di programmazione (default: python)'
-    )
-    parser.add_argument(
-        '--model',
-        type=str,
-        default='deepseek-coder:6.7b',
-        help='Modello da utilizzare (default: deepseek-coder:6.7b)'
-    )
+    banner()
     
-    args = parser.parse_args()
-    
-    # Inizializza il generatore
-    generator = CodeGenerator(model=args.model)
-    
-    if args.prompt:
-        # Modalità single-shot
-        result = generator.generate(args.prompt, args.language)
-        print(result)
-    else:
-        # Modalità interattiva
+    try:
+        # Recupera dinamicamente il modello dallo YAML
+        target_model = get_default_model()
+        
+        # Inizializza il generatore con il modello scelto
+        # Ora CodeGenerator userà internamente il ModelLoader aggiornato
+        generator = CodeGenerator(model=target_model)
+        
+        print(f"🚀 Initializing with model: {target_model}")
+        print("🧞 Code Genie active! Type 'generate' or your request.")
+        
+        # Avvia l'interfaccia CLI
         cli = CLI(generator)
         cli.run()
+        
+    except KeyboardInterrupt:
+        print("\n\n[!] Shutting down... Regards from BitJacker!")
+        sys.exit(0)
+    except Exception as e:
+        print(f"\n[!] Critical Error: {e}")
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()

@@ -1,32 +1,55 @@
-# Configurazione modelli disponibili
+# 🔓 Uncensored Coder - Model Configuration
 
-default_model: "deepseek-coder:6.7b"
+# Il modello predefinito ora è Dolphin (completamente senza censure)
+default_model: "dolphin-llama3"
 
 models:
+  dolphin-llama3:
+    sizes:
+      - "8b"
+    description: "Modello Dolphin-Llama3: Totalmente Uncensored e ottimizzato per istruzioni complesse."
+    recommended: true
+    context_window: 8192
+
   deepseek-coder:
     sizes:
       - "1.3b"
       - "6.7b"
       - "33b"
-    description: "Specializzato in code generation"
-    recommended: true
+    description: "Specializzato in code generation pura (può avere filtri interni)."
+    recommended: false
+    context_window: 16384
   
   codellama:
     sizes:
       - "7b"
       - "13b"
       - "34b"
-    description: "Code generation di Meta"
-  
+    description: "Modello Meta per coding standard."
+    context_window: 4096
+
   starcoder2:
     sizes:
       - "3b"
       - "7b"
       - "15b"
-    description: "Code generation open source"
+    description: "Addestrato su oltre 600 linguaggi di programmazione."
+    context_window: 8192
 
-# Impostazioni di generazione
+# ⚙️ Impostazioni di Generazione Avanzate
 generation:
-  temperature: 0.2  # Più basso = più deterministico
-  top_p: 0.95
-  max_tokens: 2048
+  # 0.1 - 0.2 è perfetto per il codice (meno allucinazioni)
+  temperature: 0.1 
+  top_p: 0.9
+  top_k: 40
+  max_tokens: 4096
+  # Ripetizioni ridotte per evitare loop nel codice
+  presence_penalty: 0.0
+  frequency_penalty: 0.1
+
+# 🛠️ System Internal Headers (Forzatura identità)
+# Questo può essere letto da core/prompt_templates.py
+system_override:
+  enabled: true
+  mode: "KERNEL_UTILITY"
+  force_language: "en" # Forza l'inglese internamente per maggiore logica

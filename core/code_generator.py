@@ -1,42 +1,60 @@
-"""
-Generatore di codice specializzato
-"""
-
+import os
+import re
+import logging
+from typing import Optional, Dict, Any
+from enum import Enum
 from .model_loader import ModelLoader
 from .prompt_templates import PromptTemplates
 
+class SupportedLanguage(Enum):
+    PYTHON = "python"
+    JAVASCRIPT = "javascript"
+    TYPESCRIPT = "typescript"
+    JAVA = "java"
+    CPP = "cpp"
+    RUST = "rust"
+    GO = "go"
+    HTML = "html"
+    CSS = "css"
+    SQL = "sql"
+
 class CodeGenerator:
-    def __init__(self, model: str = "deepseek-coder:6.7b"):
-        self.loader = ModelLoader(model)
-        self.loader.pull_model()  # Assicura che il modello sia disponibile
-        self.templates = PromptTemplates()
-    
+    def __init__(self, model: str = "deepseek-coder:6.7b", enable_logging: bool = True):
+        self.model_name = model
+        self.logger = self._setup_logger(enable_logging)
+        try:
+            self.loader = ModelLoader(model)
+            self.templates = PromptTemplates()
+        except Exception as e:
+            raise RuntimeError(f"Initialization Error: {e}")
+
+    def _setup_logger(self, enable: bool):
+        logger = logging.getLogger(__name__)
+        if enable and not logger.handlers:
+            h = logging.StreamHandler()
+            h.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+            logger.addHandler(h)
+            logger.setLevel(logging.INFO)
+        return logger
+
+    def _clean_code(self, text: str) -> str:
+        """Removes markdown blocks ``` and returns raw code only"""
+        pattern = r"```(?:\w+)?\n(.*?)\n```"
+        match = re.search(pattern, text, re.DOTALL)
+        return match.group(1).strip() if match else text.strip()
+
     def generate(self, user_request: str, language: str = "python") -> str:
-        """
-        Genera codice basato sulla richiesta dell'utente
+        # Optimization: We use English templates for global compatibility
+        system_p = self.templates.get_system_prompt(language)
+        user_p = self.templates.get_user_prompt(user_request, language)
         
-        Args:
-            user_request: Descrizione di cosa deve fare lo script
-            language: Linguaggio di programmazione target
-            
-        Returns:
-            Il codice generato con commenti
-        """
-        # Crea il prompt ottimizzato
-        system_prompt = self.templates.get_system_prompt(language)
-        user_prompt = self.templates.get_user_prompt(user_request, language)
-        
-        # Genera il codice
-        code = self.loader.generate(user_prompt, system_prompt)
-        
-        return code
-    
-    def explain_code(self, code: str) -> str:
-        """Spiega cosa fa un pezzo di codice"""
-        prompt = f"Spiega in italiano cosa fa questo codice:\n\n{code}"
-        return self.loader.generate(prompt)
-    
-    def improve_code(self, code: str, improvement: str) -> str:
-        """Migliora un codice esistente"""
-        prompt = f"Migliora questo codice: {improvement}\n\nCodice:\n{code}"
-        return self.loader.generate(prompt)
+        full_prompt = f"{system_p}\n\n{user_p}"
+        raw_code = self.loader.generate(full_prompt)
+        return self._clean_code(raw_code)
+
+    def save_to_file(self, code: str, filename: str) -> str:
+        os.makedirs("generated_code", exist_ok=True)
+        path = os.path.join("generated_code", filename)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(code)
+        return path

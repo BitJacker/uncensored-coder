@@ -1,353 +1,367 @@
-# 🛡️ Bad Hand v2.5
-### *The Swiss Army Knife for Security Auditing*
+# 🔓 Uncensored Coder beta version
 
-![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Platform](https://img.shields.io/badge/platform-Linux-lightgrey.svg)
+**AI offline senza censure per generazione di codice**
 
-**Bad Hand** is a comprehensive modular Python-based framework designed for conducting penetration tests on local networks and web applications. With 30 powerful tools organized into an intuitive command-line interface, it automates common scanning and testing processes while maintaining precision and ease of use.
+Un'intelligenza artificiale completamente offline che genera codice di qualsiasi tipo senza restrizioni. Nessuna API cloud, nessun limite, privacy totale.
 
----
-
-## 🚀 Toolkit Overview
-
-The project includes **30 specialized tools** organized into independent modules for maximum efficiency:
-
-### 🌐 Network Analysis & Attack
-| Tool | Description |
-| :--- | :--- |
-| `scan.py` | Active host discovery and comprehensive network mapping |
-| `deauther.py` | Wi-Fi client deauthentication for wireless security testing |
-| `udp_attak.py` | Network stress testing via UDP flood attacks |
-| `port_scanner.py` | Nmap-like port scanning to identify open services |
-
-### 🔐 Web Application Security
-| Tool | Description |
-| :--- | :--- |
-| `xss_scanner.py` | Detects Cross-Site Scripting (XSS) vulnerabilities in web forms |
-| `sqli_scanner.py` | Comprehensive SQL Injection vulnerability scanner |
-| `rce_test.py` | Tests for Remote Code Execution (RCE) vulnerabilities |
-| `clickjacking_test.py` | Identifies clickjacking attack vectors |
-| `header_check.py` | Analyzes HTTP security headers for misconfigurations |
-| `robots_analyzer.py` | Examines robots.txt for hidden paths and misconfigurations |
-| `param_miner.py` | Discovers hidden URL parameters for testing |
-
-### 🕵️ OSINT & Reconnaissance
-| Tool | Description |
-| :--- | :--- |
-| `subdomain_enum.py` | Advanced subdomain enumeration for target expansion |
-| `dns_lookup.py` | Comprehensive DNS record enumeration and analysis |
-| `whois_recon.py` | Gathers WHOIS information for domain intelligence |
-| `reverse_ip.py` | Reverse IP lookup to find domains on shared hosting |
-| `cms_detector.py` | Identifies Content Management Systems (WordPress, Joomla, etc.) |
-| `cloud_finder.py` | Discovers exposed cloud storage buckets (AWS, Azure, GCP) |
-| `wp_scan.py` | WordPress-specific vulnerability scanner |
-| `js_extractor.py` | Extracts and analyzes JavaScript files for sensitive data |
-| `api_discovery.py` | Maps and discovers hidden API endpoints |
-
-### 🔓 Authentication & Brute Force
-| Tool | Description |
-| :--- | :--- |
-| `credential_stuffing.py` | Tests login endpoints against credential databases |
-| `ssh_brute.py` | SSH protocol brute force authentication testing |
-| `ftp_brute.py` | FTP server credential brute forcing |
-| `dir_bruteforce.py` | Directory and file discovery through brute forcing |
-
-### 🛡️ SSL/TLS & Security
-| Tool | Description |
-| :--- | :--- |
-| `ssl_checker.py` | Validates SSL/TLS certificates and cipher configurations |
-
-### 🔧 Utilities & Analysis
-| Tool | Description |
-| :--- | :--- |
-| `hash_id.py` | Identifies hash types (MD5, SHA1, SHA256, etc.) |
-| `ip_geo.py` | IP address geolocation and ASN lookup |
-| `mail_spoof.py` | Tests email spoofing vulnerabilities (SPF, DMARC, DKIM) |
-| `honeypot_det.py` | Detects potential honeypot systems |
-| `sub_takeover.py` | Identifies subdomain takeover vulnerabilities |
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Ollama](https://img.shields.io/badge/Powered%20by-Ollama-orange)](https://ollama.com/)
 
 ---
 
-## 🛠️ Installation
+## 🚀 Installazione Rapida
 
-### Prerequisites
-- **Operating System**: Linux (Kali Linux, Parrot OS, or Ubuntu recommended)
-- **Python**: Version 3.8 or higher
-- **Privileges**: Root/sudo access required for network-level tools
-
-### Quick Start
-
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/BitJacker/BadHand.git
-   cd BadHand
-   ```
-
-2. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Verify Installation**
-   ```bash
-   python3 badhand.py
-   ```
-
----
-
-## 🔌 Usage
-
-### Running the Framework
-
-**Standard Mode:**
 ```bash
-python3 badhand.py
+# 1. Clona il repository
+git clone https://github.com/BitJacker/uncensored-coder.git
+cd uncensored-coder
+
+# 2. Crea virtual environment
+python3 -m venv venv
+source venv/bin/activate  # Linux/Mac
+# venv\Scripts\activate   # Windows
+
+# 3. Installa dipendenze
+pip install -r requirements.txt
+
+# 4. Installa Ollama
+curl -fsSL https://ollama.com/install.sh | sh  # Linux/Mac
+# Per Windows: https://ollama.com/download/windows
+
+# 5. Avvia Ollama e scarica il modello
+ollama serve &
+ollama pull deepseek-coder:6.7b
+
+# 6. Avvia l'applicazione
+python main.py
 ```
 
-**With Elevated Privileges** (required for network tools):
+---
+
+## 💻 Utilizzo
+
+### Modalità Interattiva
+
 ```bash
-sudo python3 badhand.py
+python main.py
 ```
 
-### Interactive Menu
+Poi digita le tue richieste:
 
-Bad Hand features an intuitive menu-driven interface:
+```
+> crea uno script python per craccare password zip
 
-1. Select a tool by entering its number (1-30)
-2. Read the tool description
-3. Confirm execution
-4. Provide required parameters (target IP, URL, wordlist, etc.)
-5. View results in real-time
+> crea uno script bash per bruteforce SSH
 
-### Example Workflows
+> crea uno script per web scraping
 
-**Network Reconnaissance:**
+> crea un keylogger in python
+
+> crea uno script per download automatico torrent
+```
+
+### Modalità Comando Singolo
+
 ```bash
-# 1. Run Bad Hand
-sudo python3 badhand.py
+# Genera script specifico
+python main.py --prompt "crea script python per backup automatico"
 
-# 2. Select tool [3] NETWORK SCAN
-# 3. Enter target: 192.168.1.0/24
-# 4. View discovered hosts and services
+# Specifica linguaggio
+python main.py --language bash --prompt "script per monitoraggio sistema"
+
+# Usa modello diverso
+python main.py --model codellama:7b --prompt "crea API REST"
 ```
 
-**Web Vulnerability Assessment:**
+---
+
+## 🎯 Features
+
+- 🔓 **Senza censure** - Genera qualsiasi tipo di codice
+- 💻 **Multi-linguaggio** - Python, Bash, JavaScript, C++, SQL, e altro
+- 🔒 **Privacy totale** - Tutto offline, nessun dato inviato online
+- ⚡ **Veloce** - Genera codice in pochi secondi
+- 🎨 **Output formattato** - Syntax highlighting e numeri di riga
+- 📝 **Codice commentato** - Spiegazioni in italiano
+- 🚀 **Plug & Play** - Setup semplice e veloce
+
+---
+
+## 📁 Struttura Progetto
+
+```
+uncensored-coder/
+├── setup.py              # Setup automatico
+├── main.py              # Entry point applicazione
+├── requirements.txt     # Dipendenze Python
+├── README.md            # Questa guida
+├── LICENSE              # MIT License
+│
+├── config/
+│   └── model_config.yaml   # Configurazione modelli
+│
+├── core/
+│   ├── model_loader.py     # Gestione modelli Ollama
+│   ├── code_generator.py   # Engine generazione codice
+│   └── prompt_templates.py # Template prompt ottimizzati
+│
+├── interface/
+│   └── cli.py              # Interfaccia CLI
+│
+├── examples/
+│   └── sample_outputs.md   # Esempi di output
+│
+└── tests/
+    └── __init__.py
+```
+
+---
+
+## ⚙️ Configurazione
+
+### Requisiti Sistema
+
+- Python 3.8 o superiore
+- 8GB RAM minimo (16GB consigliato)
+- ~4GB spazio disco per il modello
+- Linux, macOS, o Windows
+
+### Cambiare Modello
+
+Modifica `config/model_config.yaml`:
+
+```yaml
+default_model: "deepseek-coder:6.7b"  # Cambia qui
+```
+
+### Altri Modelli Disponibili
+
 ```bash
-# 1. Select tool [4] XSS SCANNER
-# 2. Enter target: https://example.com
-# 3. Review discovered vulnerabilities
+# Più piccolo e veloce (1.3B parametri)
+ollama pull deepseek-coder:1.3b
+
+# Alternativa CodeLlama
+ollama pull codellama:7b
+
+# Più grande e potente (33B parametri)
+ollama pull deepseek-coder:33b
+
+# Mistral (uso generale)
+ollama pull mistral:7b
 ```
 
-**Subdomain Discovery:**
+### Parametri di Generazione
+
+In `config/model_config.yaml`:
+
+```yaml
+generation:
+  temperature: 0.2    # Più basso = più deterministico
+  top_p: 0.95
+  max_tokens: 2048
+```
+
+---
+
+## 📊 Confronto Modelli
+
+| Modello | Dimensione | RAM | Velocità | Qualità Codice |
+|---------|-----------|-----|----------|----------------|
+| deepseek-coder:1.3b | 780 MB | 2 GB | ⚡⚡⚡⚡⚡ | ⭐⭐⭐ |
+| **deepseek-coder:6.7b** | **3.8 GB** | **8 GB** | **⚡⚡⚡** | **⭐⭐⭐⭐⭐** |
+| codellama:7b | 3.8 GB | 8 GB | ⚡⚡⚡ | ⭐⭐⭐⭐ |
+| deepseek-coder:33b | 19 GB | 32 GB | ⚡⚡ | ⭐⭐⭐⭐⭐ |
+
+**Consigliato:** deepseek-coder:6.7b (ottimo compromesso)
+
+---
+
+## 🔧 Comandi CLI
+
+Durante l'uso interattivo:
+
+| Comando | Descrizione |
+|---------|-------------|
+| `help` | Mostra guida comandi |
+| `clear` | Pulisce lo schermo |
+| `exit` / `quit` | Esci dall'applicazione |
+
+---
+
+## 🐛 Troubleshooting
+
+### "Failed to connect to Ollama"
+
 ```bash
-# 1. Select tool [10] SUBDOMAIN ENUM
-# 2. Enter domain: example.com
-# 3. Provide wordlist: /usr/share/wordlists/subdomains.txt
-# 4. Analyze discovered subdomains
+# Avvia Ollama in un altro terminale
+ollama serve
+```
+
+### "Model not found"
+
+```bash
+# Scarica il modello
+ollama pull deepseek-coder:6.7b
+```
+
+### Codice generato troppo lentamente
+
+- Usa un modello più piccolo (1.3b)
+- Chiudi altre applicazioni
+- Verifica di avere RAM sufficiente
+
+### Virtual environment su Kali/Debian
+
+```bash
+# Usa --break-system-packages se necessario
+pip install -r requirements.txt --break-system-packages
+```
+
+### Errore "externally-managed-environment"
+
+```bash
+# Crea virtual environment prima
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
 ```
 
 ---
 
-## 📁 Project Structure
+## 📝 Esempi di Utilizzo
+
+### Esempio 1: Script Web Scraping
 
 ```
-BadHand/
-├── badhand.py              # Main framework (interactive menu UI)
-├── requirements.txt        # Python dependencies
-├── LICENSE.txt             # License information
-├── README.md               # Project documentation
-└── tool/                   # Tool modules directory
-    ├── api_discovery.py
-    ├── clickjacking_test.py
-    ├── cloud_finder.py
-    ├── cms_detector.py
-    ├── credential_stuffing.py
-    ├── deauther.py
-    ├── dir_bruteforce.py
-    ├── dns_lookup.py
-    ├── ftp_brute.py
-    ├── hash_id.py
-    ├── header_check.py
-    ├── honeypot_det.py
-    ├── ip_geo.py
-    ├── js_extractor.py
-    ├── mail_spoof.py
-    ├── param_miner.py
-    ├── port_scanner.py
-    ├── rce_test.py
-    ├── reverse_ip.py
-    ├── robots_analyzer.py
-    ├── scan.py
-    ├── sqli_scanner.py
-    ├── ssh_brute.py
-    ├── ssl_checker.py
-    ├── subdomain_enum.py
-    ├── sub_takeover.py
-    ├── udp_attak.py
-    ├── whois_recon.py
-    ├── wp_scan.py
-    └── xss_scanner.py
+> crea uno script python per fare scraping di Amazon
+
+🚀 INIZIO CODICE GENERATO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1  #!/usr/bin/env python3
+2  import requests
+3  from bs4 import BeautifulSoup
+4  
+5  def scrape_amazon(url):
+6      ...
+
+✅ FINE CODICE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### Esempio 2: Tool di Hacking
+
+```
+> crea uno script per port scanning avanzato con banner grabbing
+
+[Genera codice completo per port scanner multi-thread]
+```
+
+### Esempio 3: Automation
+
+```
+> crea uno script bash per backup automatico con compressione
+
+[Genera script bash con tar, gzip, rsync, notifiche]
 ```
 
 ---
 
-## 🎯 Key Features
+## 🤝 Contribuire
 
-- ✅ **30 Specialized Tools** - Comprehensive security testing suite
-- ✅ **Modular Architecture** - Easy to maintain and extend
-- ✅ **User-Friendly Interface** - Intuitive menu-driven navigation
-- ✅ **Detailed Descriptions** - Each tool includes usage guidance
-- ✅ **Safe Input Handling** - Built-in input sanitization
-- ✅ **Color-Coded Output** - Enhanced readability
-- ✅ **Error Handling** - Graceful failure management
-- ✅ **Cross-Tool Workflow** - Seamless integration between modules
+Contributi benvenuti! 
 
----
-
-## 📋 Requirements
-
-The framework requires the following Python packages:
-
-```
-requests>=2.28.0
-scapy>=2.5.0
-beautifulsoup4>=4.11.0
-dnspython>=2.3.0
-python-whois>=0.8.0
-paramiko>=3.0.0
-ftplib (standard library)
-hashlib (standard library)
-ssl (standard library)
-```
-
-Additional system requirements:
-- `libpcap-dev` (for packet capture)
-- Wireless adapter with monitor mode support (for WiFi tools)
-- `nmap` (optional, for enhanced scanning)
+1. Fork il progetto
+2. Crea il tuo branch (`git checkout -b feature/AmazingFeature`)
+3. Commit le modifiche (`git commit -m 'Add AmazingFeature'`)
+4. Push al branch (`git push origin feature/AmazingFeature`)
+5. Apri una Pull Request
 
 ---
 
-## 🔒 Security Best Practices
+## ⚠️ Disclaimer
 
-1. **Always obtain written authorization** before testing any system
-2. **Use in isolated environments** (home lab, VMs) for practice
-3. **Respect rate limits** to avoid service disruption
-4. **Document findings** professionally in security reports
-5. **Never store** credentials or sensitive data discovered during tests
-6. **Follow responsible disclosure** when reporting vulnerabilities
+Questo tool è progettato per **scopi educativi e di ricerca**. 
 
----
+L'utente è **completamente responsabile** dell'uso che fa del codice generato. Gli autori non sono responsabili per:
 
-## ⚠️ Legal Disclaimer
+- Uso improprio del software
+- Violazioni di leggi locali o internazionali
+- Danni causati dall'uso del codice generato
+- Violazioni di termini di servizio di terze parti
 
-> **IMPORTANT**: Bad Hand is designed exclusively for **authorized security testing** and **educational purposes**.
-
-**Unauthorized access to computer systems is illegal.** Use of this framework against targets without prior written consent violates laws including but not limited to:
-- Computer Fraud and Abuse Act (CFAA) - United States
-- Computer Misuse Act - United Kingdom  
-- Similar legislation in other jurisdictions
-
-**By using Bad Hand, you agree to:**
-- Obtain proper authorization before conducting any security tests
-- Comply with all applicable local, state, federal, and international laws
-- Accept full responsibility for your actions
-
-**The developer (BitJacker) assumes NO LIABILITY** for:
-- Misuse of this toolkit
-- Damage caused by unauthorized testing
-- Legal consequences resulting from improper use
-
-**Use at your own risk. Stay legal, stay ethical.**
+**Usa responsabilmente e nel rispetto delle leggi.**
 
 ---
 
-## 🤝 Contributing
+## 📜 Licenza
 
-Contributions are welcome! Here's how you can help:
+MIT License - Vedi [LICENSE](LICENSE) per dettagli.
 
-### Reporting Bugs
-- Open an issue with detailed reproduction steps
-- Include system information and error messages
-- Suggest potential fixes if possible
+Questo significa che puoi:
+- ✅ Usarlo commercialmente
+- ✅ Modificarlo
+- ✅ Distribuirlo
+- ✅ Usarlo privatamente
 
-### Adding Features
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/NewTool`)
-3. Follow the existing code structure
-4. Add documentation for new tools
-5. Test thoroughly
-6. Submit a pull request
-
-### Code Standards
-- Follow PEP 8 style guidelines
-- Include docstrings for functions
-- Add error handling
-- Sanitize user inputs
-- Comment complex logic
+L'unica condizione è mantenere il copyright notice.
 
 ---
 
-## 📚 Documentation & Resources
+## 🙏 Ringraziamenti
 
-- **GitHub Repository**: [https://github.com/BitJacker/BadHand](https://github.com/BitJacker/BadHand)
-- **Issue Tracker**: Report bugs and request features
-- **Wiki**: Detailed tool documentation and tutorials (coming soon)
-
-### Recommended Learning Resources
-- [OWASP Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
-- [HackerOne Hacker101](https://www.hacker101.com/)
-- [PortSwigger Web Security Academy](https://portswigger.net/web-security)
+- [Ollama](https://ollama.com/) - Runtime per LLM locali
+- [DeepSeek](https://www.deepseek.com/) - Modello DeepSeek-Coder
+- [Rich](https://rich.readthedocs.io/) - Bellissimo output terminale
+- [Prompt Toolkit](https://python-prompt-toolkit.readthedocs.io/) - CLI interattiva
 
 ---
 
-## 🏆 Credits
+## 📞 Supporto
 
-**Bad Hand** is developed and maintained by **BitJacker**.
-
-### Special Thanks
-- The open-source security community
-- Contributors and testers
-- Tool developers whose work inspired this project
+- **Issues:** [GitHub Issues](https://github.com/BitJacker/uncensored-coder/issues)
+- **Discussioni:** [GitHub Discussions](https://github.com/BitJacker/uncensored-coder/discussions)
 
 ---
 
-## 📜 License
+## 🌟 Star History
 
-This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.txt) file for details.
-
----
-
-## 📞 Contact
-
-- **Developer**: BitJacker
-- **GitHub**: [@BitJacker](https://github.com/BitJacker)
-- **Issues**: [GitHub Issues](https://github.com/BitJacker/BadHand/issues)
+Se ti piace il progetto, lascia una ⭐ su GitHub!
 
 ---
 
-## 🔄 Version History
+## 🔮 Roadmap
 
-### v2.5 (Current)
-- Expanded to 30 specialized tools
-- Enhanced menu interface
-- Improved error handling
-- Added tool categorization
-- Better input sanitization
-
-### v1.0 (Initial Release)
-- 10 core security tools
-- Basic menu system
-- Foundation framework
+- [ ] Interfaccia web (GUI)
+- [ ] Supporto più modelli (Llama, Mistral, etc.)
+- [ ] Salvataggio automatico output
+- [ ] Template library per exploit comuni
+- [ ] Esecuzione codice in sandbox
+- [ ] Multi-file project generation
+- [ ] Export in diversi formati
 
 ---
 
-<div align="center">
+## 💡 FAQ
 
-**Made with ❤️ for the security community**
+**Q: È davvero "uncensored"?**  
+A: Sì, non ci sono filtri esterni. Il modello genera qualsiasi codice tecnicamente valido.
 
-*Remember: With great power comes great responsibility*
+**Q: È legale?**  
+A: Il software stesso è legale. L'uso che ne fai dipende da te e dalle tue leggi locali.
 
-⭐ Star this repository if you find it useful!
+**Q: Funziona offline?**  
+A: Sì, completamente. Dopo aver scaricato il modello, non serve internet.
 
-</div>
+**Q: Dove sono salvati i modelli?**  
+A: In `~/.ollama/models/` (gestiti da Ollama)
+
+**Q: Posso usarlo per progetti commerciali?**  
+A: Sì, è MIT License - completamente libero.
+
+---
+
+**Made with 💀 by [BitJacker](https://github.com/BitJacker)**
+
+**Uncensored Coder** - Because code should be free 🔓
